@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="vue_det">
+			<h1>site:{{site}}</h1>
+			<h1>url:{{url}}</h1>
+			<h1>{{details()}}</h1>
+		</div>
+		
+		<br/>
+		
+		<div id="vue_det1">
+			<h1>site:{{site}}</h1>
+			<h1>url:{{url}}</h1>
+			<h1>{{alexa}}</h1>
+		</div>
+		
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:'#vue_det', //表示这段代码的作用域
+				data:{
+					site:"Hello World!",
+					url:"www.google.com",
+					alexa:"10000"
+				},
+				
+				methods:{
+					details:function(){
+						return this.site+"--发现全世界"
+					}
+				}
+				
+			});
+			
+			data = {site:"Hello World!",url:"www.google.com",alexa:"10000"}
+			
+			var vm2=new Vue({
+				el:'#vue_det1',
+				data:data,
+			});
+			
+			//vm2.site和data.site是同一个对象
+			document.write(vm2.site==data.site);
+			document.write('<br/>');
+			
+			//vue的data改变，则原始data也会改变
+			
+			vm2.site="你好世界！";
+			document.write("data.site也会改变："+data.site+"<br/>");
+			
+			//反之亦然
+			
+			data.alexa="1024";
+			document.write("vm2.alexa也会改变："+vm2.alexa+"<br/>");
+			
+			//访问vue对象的属性，需要$
+			
+			document.write(vm2.$data===data)
+			document.write("<br/>")
+			document.write(vm2.$el===document.getElementById("vue_det1"))
+			
+				
+		</script>
+		
+		
+	</body>
+</html>

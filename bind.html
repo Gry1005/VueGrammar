@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Vue 测试实例 - 菜鸟教程(runoob.com)</title>
+<script src="https://cdn.staticfile.org/vue/2.2.2/vue.min.js"></script>
+<style>
+.active {
+	width: 100px;
+	height: 100px;
+	background: green;
+}
+.text-danger {
+	background: red;
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div v-bind:class="{ 'active': isActive, 'text-danger':hasError}"></div>
+  
+  <button v-on:click="errorChange()" >error?</button>
+  
+  <div v-bind:class="classObject"></div>
+	
+  <div v-bind:class="computedObject"></div>
+  
+  <div v-bind:class="[activeClass,errorClass]"></div>
+  
+  <p v-bind:style="{ fontSize: fontsize+'px' }">输入字体的大小:</p>
+  
+  <input type="text" v-model="fontsize">
+  
+  <p v-bind:style="styleObject">绑定一个json对象</p>
+  
+  <p v-bind:style="[ styleObject,sObject2 ]">绑定一个json对象数组</p>
+  
+</div>
+
+<script>
+new Vue({
+  el: '#app',
+  data: {
+    isActive: true,
+	hasError: false,
+	classObject:{
+		'active':true,
+		'text-danger':true
+	},
+	activeClass:'active',
+	errorClass:'text-danger',
+	fontsize:10,
+	styleObject:{
+		color:'green',
+		fontSize:'30px'
+	},
+	sObject2:{
+		'font-weight':'bold'
+	}
+  },
+  methods:{
+	  errorChange:function()
+	  {
+		  this.hasError=!this.hasError
+	  }
+  },
+  computed:{
+	  computedObject: function(){
+		  
+		  //console.log('running')
+		  
+		  return {
+			  'active':true,
+			  'text-danger':false
+		  }
+	  }
+  }
+})
+</script>
+</body>
+</html>

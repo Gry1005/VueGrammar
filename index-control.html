@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		
+		<div id="app">
+		<p v-if="seen">你看到我了</p>
+		
+		<div v-if="random > 0.6">
+			larger than 0.6: {{random}}
+		</div>
+		<div v-else-if="random > 0.3">
+			0.3 ~ 0.6: {{random}}
+		</div>
+		<div v-else>
+			smaller than 0.3: {{random}}
+		</div>
+		
+		<div v-show="random > 0.3 && random < 0.6">
+			v-show: it's 0.3 ~ 0.6
+		</div>
+		
+		<div v-for="site in sites">
+			{{site.name}}
+		</div>
+		
+		<div v-for="(value,key,index) in object">
+			{{index}}. {{key}} : {{value}}
+		</div>
+		
+		<div v-for="n in 10">
+			{{n}}
+		</div>
+		
+		</div>
+		
+		<script type="text/javascript">
+			
+			var vm = new Vue({
+				el:'#app', //表示这段代码的作用域
+				data:{
+					seen:true,
+					random:0,
+					sites:[
+						{name:'Baidu'},
+						{name:'Google'},
+						{name:'Taobao'}
+					],
+					object:{
+						name:"Google",
+						url:"www.google.com",
+						slogan:"Don't be evil"
+					}
+				},
+				
+				methods:{
+					
+				}
+				
+			});
+			
+			vm.random = Math.random()
+				
+		</script>
+		
+		
+	</body>
+</html>

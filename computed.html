@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	
+	<style>
+	
+	</style>
+	
+	<body>
+			
+		<div id="app">
+			
+			<p>原始字符串:{{message}}</p>
+			
+			<p>反转后的字符串:{{reverseM2()}}</p>
+			
+		</div>
+		
+		<script>
+			var vm=new Vue({
+				el:"#app",
+				data:{
+					message:"Hello World!",
+					message1:"你好，世界！",
+					use: false,
+					classid:1
+				},
+				methods:{
+					reverse: function()
+					{
+						this.message1=this.message1.split('').reverse().join('');
+					},
+					reverseM2:function()
+					{
+						return this.message.split('').reverse().join()
+					}
+					
+				},
+				computed:{
+					reverseM:function()
+					{
+						return this.message.split('').reverse().join()
+					},
+					site: {
+					      // getter
+					      get: function () {
+					        return this.name + ' ' + this.url
+					      },
+					      // setter
+					      set: function (newValue) {
+					        var names = newValue.split(' ')
+					        this.name = names[0]
+					        this.url = names[names.length - 1]
+					      }
+					}
+				}
+			})
+			
+			vm.site="Google www.google.com"
+			document.write('name: ' + vm.name);
+			document.write('<br>');
+			document.write('url: ' + vm.url);
+			
+		</script>
+		
+	</body>
+</html>

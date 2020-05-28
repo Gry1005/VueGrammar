@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/vue.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<style>
+	.class1{
+	  background: #444;
+	  color: #eee;
+	}
+	</style>
+	<body>
+			
+		<div id="app">
+			<div v-html="message"></div>
+			<div v-bind:class="'class'+classid">v-bind的用法</div>
+			<label for="r1">修改颜色</label><input type="checkbox" v-model="use" id="r1">
+			<div v-bind:class="{'class1':use}">v-bind动态修改颜色</div>
+			<div>{{message1}}</div>
+			<button v-on:click="reverse">reverse</button>
+			</br>
+			{{5+5}}</br>
+			{{ use ? 'YES' : 'NO' }}<br>
+		</div>
+		
+		<script>
+			new Vue({
+				el:"#app",
+				data:{
+					message:"<h1>Hello World!</h1>",
+					message1:"你好，世界！",
+					use: false,
+					classid:1
+				},
+				methods:{
+					reverse: function()
+					{
+						this.message1=this.message1.split('').reverse().join('');
+					}
+				}
+			})
+		</script>
+		
+	</body>
+</html>
